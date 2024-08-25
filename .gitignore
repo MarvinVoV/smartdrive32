@@ -1,0 +1,63 @@
+# 编译生成的文件
+*.o
+*.a
+*.so
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+*.d
+*.suo
+*.user
+*.swp
+*.tmp
+
+# STM32CubeIDE (或STM32CubeMX) 生成的文件
+*.launch
+*.project
+*.cproject
+.settings/
+.externalToolBuilders/
+.cproject
+.project
+*.aps
+*.log
+
+# 编译器生成的文件
+*.out
+*.dep
+*.dmp
+*.idb
+*.iobj
+
+# 编译缓存
+build/
+Debug/
+Release/
+*.dep
+*.tmp
+
+# 系统生成的文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 其他忽略的文件
+*.stackdump
+*.tmp
+*.swp
+
+# 文档和其他生成文件
+*.pdf
+*.docx
+*.xlsx
+
+# 用户配置
+*.user
+*.userprefs
+
+# 其他IDE特定文件
+.vscode/
+.idea/
+
