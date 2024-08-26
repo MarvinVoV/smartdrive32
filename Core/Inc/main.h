@@ -57,6 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define huart_esp huart4
+#define huart_pc huart5
+#define ESP_TX_Pin GPIO_PIN_0
+#define ESP_TX_GPIO_Port GPIOA
+#define ESP_RX_Pin GPIO_PIN_1
+#define ESP_RX_GPIO_Port GPIOA
+#define PC_RX_Pin GPIO_PIN_12
+#define PC_RX_GPIO_Port GPIOB
+#define PC_TX_Pin GPIO_PIN_13
+#define PC_TX_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
