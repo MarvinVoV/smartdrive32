@@ -32,6 +32,9 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "uart_buffers.h"
+#include "uart_handle.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -47,6 +50,7 @@ extern "C" {
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -58,7 +62,7 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 #define huart_esp huart4
-#define huart_pc huart5
+#define huart_debug huart5
 #define ESP_TX_Pin GPIO_PIN_0
 #define ESP_TX_GPIO_Port GPIOA
 #define ESP_RX_Pin GPIO_PIN_1
@@ -69,6 +73,10 @@ void Error_Handler(void);
 #define PC_TX_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+
+#define ARRAY_LEN(array) (sizeof(array) / sizeof((array)[0]))
+
+
 
 /* USER CODE END Private defines */
 

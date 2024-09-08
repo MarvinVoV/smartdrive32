@@ -4,17 +4,27 @@
  *  Created on: Aug 26, 2024
  *      Author: sunyameng
  */
+#include <stdbool.h>
+#include <stdlib.h>
+#include "ringbuffer.h"
+
 
 #ifndef INC_UART_BUFFERS_H_
 #define INC_UART_BUFFERS_H_
 
-#define UART_ESP_RX_BUFFER_SIZE  256
-#define UART_PC_RX_BUFFER_SIZE  256
-
-extern char uart_esp_buffer[UART_ESP_RX_BUFFER_SIZE];
-extern char uart_pc_buffer[UART_PC_RX_BUFFER_SIZE];
 
 
+// UART RX TEMP BUFFER SIZE
+#define RX_BUFFER_SIZE (5)
+
+// UART RX RING_BUFFER SIZE
+#define UART_RX_RING_BUFFER_SIZE (10)
+
+// UART RX BUFFER
+extern uint8_t debugUartRxBuffer[RX_BUFFER_SIZE];
+
+// UART Rx RingBuffer struct
+extern RingBuffer debugUartRxRb;
 
 
 

@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "uart_buffers.h"
+
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,6 +32,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+
 
 /* USER CODE END PD */
 
@@ -103,14 +106,8 @@ int main(void)
   MX_UART5_Init();
   /* USER CODE BEGIN 2 */
 
-  // 开启空闲中断
-  __HAL_UART_ENABLE_IT(&huart_esp, UART_IT_IDLE);
-  __HAL_UART_ENABLE_IT(&huart_pc, UART_IT_IDLE);
-
-
-  // 启动通过DMA接收数据
-  HAL_UARTEx_ReceiveToIdle_DMA(&huart_pc, uart_pc_buffer, sizeof(uart_pc_buffer));
-  HAL_UARTEx_ReceiveToIdle_DMA(&huart_esp, uart_esp_buffer, sizeof(uart_esp_buffer));
+  // 初始化UART DMA
+  init_UART_DMA(&huart_debug, debugUartRxBuffer, RX_BUFFER_SIZE);
 
 
   /* USER CODE END 2 */
@@ -119,6 +116,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if (!rb_is_empty(&debugUartRxRb)) {
+		  read_and_transmit_content(&huart5, &debugUartRxRb);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
