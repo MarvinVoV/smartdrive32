@@ -106,8 +106,15 @@ int main(void)
   MX_UART5_Init();
   /* USER CODE BEGIN 2 */
 
-  // 初始化UART DMA
+  // Init Debug UART DMA
   init_UART_DMA(&huart_debug, debugUartRxBuffer, RX_BUFFER_SIZE);
+
+  // Init ESP8266 UART DMA
+  init_UART_DMA(&huart_debug, espUartRxBuffer, ESP_RX_BUFFER_SIZE);
+
+
+  HAL_Delay(500);
+  esp_send_at_commend(&huart4);
 
 
   /* USER CODE END 2 */
@@ -116,8 +123,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if (!rb_is_empty(&debugUartRxRb)) {
-		  read_and_transmit_content(&huart5, &debugUartRxRb);
+	  if (!rb_is_empty(&espUartRxRb)) {
+		  read_and_transmit_content(&huart4, &espUartRxRb);
 	  }
     /* USER CODE END WHILE */
 

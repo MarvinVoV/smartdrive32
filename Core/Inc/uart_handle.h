@@ -12,6 +12,7 @@
 #include "uart_buffers.h"
 
 extern UART_HandleTypeDef huart5;
+extern UART_HandleTypeDef huart4;
 
 /**
  * 初始化UART DMA

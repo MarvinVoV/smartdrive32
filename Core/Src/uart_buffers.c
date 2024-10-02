@@ -10,11 +10,12 @@
 #include "uart_buffers.h"
 
 
-// UART receive data buffer
 uint8_t debugUartRxBuffer[RX_BUFFER_SIZE];
-
-// UART RECEIVE BUFFER for RingBuffer
 uint8_t debugUartRxRingBuffer[UART_RX_RING_BUFFER_SIZE];
+
+
+uint8_t espUartRxBuffer[ESP_RX_BUFFER_SIZE];
+uint8_t espUartRxRingBuffer[EPS_UART_RX_RING_BUFFER_SIZE];
 
 
 // Initial debug UART RingBuffer struct
@@ -27,3 +28,12 @@ RingBuffer debugUartRxRb= {
 		.end_char = '\n'
 };
 
+
+RingBuffer espUartRxRb= {
+		.buffer = espUartRxRingBuffer,
+		.capacity = EPS_UART_RX_RING_BUFFER_SIZE,
+		.size = 0,
+		.head = 0,
+		.tail = 0,
+		.end_char = '\n'
+};

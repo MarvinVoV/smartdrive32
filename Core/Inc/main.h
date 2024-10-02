@@ -34,6 +34,7 @@ extern "C" {
 
 #include "uart_buffers.h"
 #include "uart_handle.h"
+#include "esp8266.h"
 
 /* USER CODE END Includes */
 

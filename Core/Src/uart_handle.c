@@ -37,8 +37,22 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 
 		// 重启DMA
 		HAL_UARTEx_ReceiveToIdle_DMA(huart, huart->pRxBuffPtr, RX_BUFFER_SIZE);
-	} else {
+	} else if(huart == &huart4){
+		// esp8266
 
+		// 本次接收到的数据长度
+		uint16_t receivedSize = Size;
+
+		// 剩余可用空间长度
+		uint16_t remaingSize = __HAL_DMA_GET_COUNTER(huart->hdmarx);
+
+		rb_write(&espUartRxRb, huart->pRxBuffPtr, receivedSize);
+
+		transmit_uart_rx_debug_info(huart, receivedSize, remaingSize);
+
+
+		// 重启DMA
+		HAL_UARTEx_ReceiveToIdle_DMA(huart, huart->pRxBuffPtr, ESP_RX_BUFFER_SIZE);
 	}
 	return;
 
